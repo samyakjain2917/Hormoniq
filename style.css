@@ -1,0 +1,213 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+  }
+  
+  body {
+    background: #fff8f5;
+    color: #333;
+    scroll-behavior: smooth;
+  }
+  
+  /* Navbar */
+  header {
+    background: #ffe6f0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #d14b8f;
+  }
+  
+  .nav-tabs {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    font-weight: 600;
+    color: #d14b8f;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .nav-link:hover,
+  .nav-link.active {
+    background-color: #fdd0e4;
+    color: #a9356a;
+  }
+  
+  /* Responsive Menu */
+  @media (max-width: 768px) {
+    .nav-tabs {
+      flex-direction: column;
+      display: none;
+      background-color: #ffe6f0;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 100%;
+      padding: 1rem;
+    }
+  
+    .nav-tabs.active {
+      display: flex;
+    }
+  
+    .menu-toggle {
+      display: block;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: #d14b8f;
+    }
+  }
+  
+  /* Hero Section */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  
+  .hero h2 {
+    font-size: 2.5rem;
+    color: #b03a72;
+    margin-bottom: 1rem;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  .hero p {
+    max-width: 600px;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    color: #555;
+  }
+  
+  .cta-button {
+    padding: 0.8rem 2rem;
+    background-color: #d14b8f;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background-color: #a9356a;
+    transform: scale(1.05);
+  }
+  
+  /* Screenshot Placeholder */
+  .screenshot-placeholder {
+    margin-top: 3rem;
+    height: 300px;
+    width: 100%;
+    max-width: 700px;
+    background-color: #fce4ec;
+    border: 2px dashed #d14b8f;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #b03a72;
+  }
+  
+  /* Sections */
+  .features, .plans, .chatbot, .contact {
+    background-color: #fff0f5;
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  
+  .features h2, .plans h2, .chatbot h2, .contact h2 {
+    font-size: 2.2rem;
+    color: #b03a72;
+    margin-bottom: 2rem;
+  }
+  
+  .features-grid, .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .feature-card, .plan-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .feature-card:hover, .plan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+  
+  .feature-card h3, .plan-card h3 {
+    color: #d14b8f;
+    margin-bottom: 1rem;
+  }
+  
+  .feature-card p, .plan-card p {
+    color: #666;
+    font-size: 0.95rem;
+  }
+  
+  /* Contact Form */
+  form input, form textarea, select {
+    width: 100%;
+    max-width: 500px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  form button {
+    padding: 0.7rem 1.5rem;
+    background: #d14b8f;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  form button:hover {
+    background-color: #b03a72;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }

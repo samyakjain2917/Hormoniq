@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hormoniq | Your AI PCOS Wellness Buddy</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Quicksand', sans-serif;
+    }
+    body {
+      background: #fff8f5;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+    header {
+      background-color: #ffe6f0;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+    header h1 {
+      font-size: 1.8rem;
+      color: #d14b8f;
+    }
+    nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: #d14b8f;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #a9356a;
+    }
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .hero h2 {
+      font-size: 2.5rem;
+      color: #b03a72;
+      margin-bottom: 1rem;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .hero p {
+      max-width: 600px;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+      color: #555;
+    }
+    .cta-button {
+      padding: 0.8rem 2rem;
+      background-color: #d14b8f;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .cta-button:hover {
+      background-color: #a9356a;
+      transform: scale(1.05);
+    }
+    .screenshot-placeholder {
+      margin-top: 3rem;
+      height: 300px;
+      width: 100%;
+      max-width: 700px;
+      background-color: #fce4ec;
+      border: 2px dashed #d14b8f;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      color: #b03a72;
+    }
+    .features-section {
+  background-color: #ffeef7;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.features-section h2 {
+  font-size: 2.5rem;
+  color: #b03a72;
+  margin-bottom: 3rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.feature-tab {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid #fbd1e0;
+}
+
+.feature-tab h3 {
+  font-size: 1.2rem;
+  color: #d14b8f;
+  margin-bottom: 1rem;
+}
+
+.feature-tab p {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+.feature-tab:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+  background-color: #fff7fb;
+}
+.features-grid, .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .feature-card, .plan-card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .feature-card:hover, .plan-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    .feature-card h3, .plan-card h3 {
+      color: #d14b8f;
+      margin-bottom: 1rem;
+    }
+    .feature-card p, .plan-card p {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    #calendarBox {
+      display: none;
+      margin-top: 2rem;
+      background-color: white;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    form input, form textarea {
+      width: 100%;
+      max-width: 500px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+    form button {
+      padding: 0.7rem 1.5rem;
+      background: #d14b8f;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    form button:hover {
+      background-color: #b03a72;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hormoniq</h1>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#plans">Plans</a>
+      <a href="#chat">Chatbot</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Your AI-Powered PCOS Wellness Buddy</h2>
+    <p>Hormoniq supports your journey with personalized cycle tracking, lifestyle plans, and AI-driven tools to help you manage PCOS like a boss.</p>
+    <button class="cta-button">Start Your Wellness Journey</button>
+    <img src = "image1.jpg">
+
+    <section id="features" class="features-section">
+      <h2>What Hormoniq Offers</h2>
+      <div class="features-grid">
+        <a href="ai_symtom.html" class="feature-tab">
+          <h3>🤖 AI Symptom & Cycle Tracker</h3>
+          <p>Predicts periods, ovulation & flare-ups using your personal history.</p>
+        </a>
+        <a href="lifestyle.html" class="feature-tab">
+          <h3>✨ Personalized Lifestyle Plans</h3>
+          <p>Custom meals, hormone-balancing workouts, and stress-relief tools.</p>
+        </a>
+        <a href="calender.html" class="feature-tab">
+          <h3>🗓 Smart Reminders</h3>
+          <p>Auto-alerts for meds, supplements, and ovulation/period calendar.</p>
+        </a>
+        <a href="chatbot.html" class="feature-tab">
+          <h3>💬 Doctor Chatbot</h3>
+          <p>24×7 AI support that learns from your inputs & guides you wisely.</p>
+        </a>
+        <a href="mood-sleep.html" class="feature-tab">
+          <h3>🧠 Mood, Skin & Sleep Tracker</h3>
+          <p>See how hormones affect your emotions, breakouts, and rest.</p>
+        </a>
+        <a href="mood_based_food.html" class="feature-tab">
+          <h3>🍫 Mood-Based Food Suggestions</h3>
+          <p>Healthy food swaps based on how you’re feeling and your PCOS type.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="plans" id="plans">
+      <h2>Choose Your Plan</h2>
+      <div class="plans-grid">
+        <div class="plan-card">
+          <a href="free_plam.html" class="plan-tab">
+            <h3>Free Plan</h3>
+            <p>Basic cycle tracking, reminders, and limited chatbot access</p>
+          </a>
+        </div>
+        <div class="plan-card">
+          <a href="premium.html" class="plan-tab">
+            <h3>Premium Plan</h3>
+            <p>Full access to all features, unlimited symptom tracking, expert chat & insights.</p>
+          </a>
+        </div>
+        <div class="plan-card">
+          <a href="hormoniq.html" class="plan-tab">
+            <h3>Hormoniq+ Plan</h3>
+            <p>Includes one-on-one consultations, deep insights, and dietician support.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  
+
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea rows="4" placeholder="Your Message"></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <footer style="background-color: #fce4ec; padding: 40px 20px; color: #4a148c;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; max-width: 1200px; margin: auto;">
+      
+      <!-- About -->
+      <div style="flex: 1 1 250px; margin: 10px;">
+        <h3 style="margin-bottom: 10px;">About Us</h3>
+        <p>Empowering women with smart, AI-driven insights for PCOS and menstrual health. Track symptoms, get tips, and feel supported every step of the cycle.</p>
+      </div>
+  
+      <!-- Quick Links -->
+      <div style="flex: 1 1 200px; margin: 10px;">
+        <h3 style="margin-bottom: 10px;">Quick Links</h3>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="#features" style="color: inherit; text-decoration: none;">Features</a></li>
+          <li><a href="#blog" style="color: inherit; text-decoration: none;">Blog</a></li>
+          <li><a href="#faq" style="color: inherit; text-decoration: none;">FAQs</a></li>
+          <li><a href="#contact" style="color: inherit; text-decoration: none;">Contact</a></li>
+        </ul>
+      </div>
+  
+      <!-- Contact -->
+      <div style="flex: 1 1 250px; margin: 10px;">
+        <h3 style="margin-bottom: 10px;">Contact</h3>
+        <p>Email: <a href="mailto:support@yourapp.com" style="color: inherit;">support@yourapp.com</a></p>
+        <p>Phone: +1 (555) 123-4567</p>
+        <p>Location: New York, NY</p>
+      </div>
+  
+      <!-- Social -->
+      <div style="flex: 1 1 200px; margin: 10px;">
+        <h3 style="margin-bottom: 10px;">Follow Us</h3>
+        <a href="#" style="margin-right: 10px;">🌐</a>
+        <a href="#" style="margin-right: 10px;">📘</a>
+        <a href="#" style="margin-right: 10px;">📸</a>
+        <a href="#">🐦</a>
+      </div>
+    </div>
+  
+    <div style="text-align: center; margin-top: 30px; font-size: 14px;">
+      &copy; 2025 YourAppName. All rights reserved. | Privacy Policy | Terms of Use
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+  <script>
+    function toggleCalendar() {
+      const calendar = document.getElementById('calendarBox');
+      if (calendar.style.display === 'block') {
+        calendar.style.display = 'none';
+      } else {
+        calendar.style.display = 'block';
+        if (!window.calendarInitiated) {
+          const calendarEl = document.getElementById('calendar');
+          const calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            selectable: true,
+            events: [
+              { title: 'Period Start', date: '2025-04-08' },
+              { title: 'Period End', date: '2025-04-12' },
+              { title: 'Ovulation', date: '2025-04-18' }
+            ]
+          });
+          calendar.render();
+          window.calendarInitiated = true;
+        }
+      }
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+  }
+  
+  body {
+    background: #fff8f5;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  header {
+    background-color: #ffe6f0;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  header h1 {
+    color: #d14b8f;
+  }
+  
+  nav a {
+    margin-left: 1rem;
+    text-decoration: none;
+    color: #d14b8f;
+    font-weight: 600;
+  }
+  
+  nav a.active, nav a:hover {
+    color: #a9356a;
+    text-decoration: underline;
+  }
+  
+  .intro {
+    text-align: center;
+    padding: 3rem 2rem;
+  }
+  
+  .intro h2 {
+    color: #b03a72;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .conditions-form {
+    background-color: #fff0f5;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .conditions-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .conditions-form select, .conditions-form button {
+    padding: 0.7rem;
+    width: 80%;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .conditions-form button {
+    background-color: #d14b8f;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .conditions-form button:hover {
+    background-color: #a9356a;
+  }
+  
+  .plans-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 3rem 2rem;
+    justify-content: center;
+    background: #fff;
+  }
+  
+  .plan-card {
+    background: #fff0f5;
+    padding: 2rem;
+    border-radius: 16px;
+    width: 300px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+  }
+  
+  .plan-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .plan-card h4 {
+    color: #d14b8f;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .plan-card ul {
+    list-style: disc inside;
+    text-align: left;
+    color: #444;
+  }
+  
+  .extra-tips {
+    background-color: #fce4ec;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .extra-tips h3 {
+    color: #b03a72;
+    margin-bottom: 1rem;
+  }
+  
+  .extra-tips ul {
+    list-style: none;
+    padding-left: 0;
+    color: #555;
+  }
+  
+  .extra-tips ul li::before {
+    content: "💠 ";
+  }
+  
